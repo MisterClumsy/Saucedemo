@@ -1,0 +1,44 @@
+{
+	"name": "saucedemo",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"lint:fix": "eslint . --fix",
+		"lint:report": "eslint . -o ./testOutput/eslintReport.html",
+		"lint": "eslint ./tests",
+		"postinstall": "npx playwright install --with-deps",
+		"prepare": "husky",
+		"prettier:check": "npx prettier . --check",
+		"prettier:fix": "npx prettier . --write",
+		"show-report": "npx playwright show-report test-output/html",
+		"snapshots:update": "cross-env PW_ENV=prod playwright test -c config/visual.config.ts --update-snapshots",
+		"test:e2e": "cross-env PW_ENV=prod playwright test -c config/e2e.config.ts",
+		"test:visual": "cross-env PW_ENV=prod playwright test -c config/visual.config.ts",
+		"test:a11y": "cross-env PW_ENV=prod playwright test -c config/a11y.config.ts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MisterClumsy/Saucedemo.git"
+	},
+	"author": "Ian Richards",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/MisterClumsy/Saucedemo/issues"
+	},
+	"homepage": "https://github.com/MisterClumsy/Saucedemo#readme",
+	"devDependencies": {
+		"@axe-core/playwright": "^4.10.2",
+		"@playwright/test": "^1.54.2",
+		"@types/node": "^24.2.1",
+		"axe-html-reporter": "^2.2.11",
+		"cross-env": "^10.0.0",
+		"dotenv": "^16.3.1",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-playwright": "^2.2.2",
+		"eslint": "^9.33.0",
+		"husky": "^9.1.7",
+		"prettier": "^3.6.2",
+		"typescript-eslint": "^8.39.1",
+		"typescript": "^5.9.2"
+	}
+}

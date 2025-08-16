@@ -1,0 +1,71 @@
+import { test, expect } from '@fixtures';
+
+test.use({ storageState: './.auth/standard_user.json' });
+
+test.describe('Products', () => {
+	test.beforeEach(async ({ products }) => {
+		await products.goto();
+		await expect(products.locators.container).toBeVisible();
+	});
+
+	test('should allow adding multiple items to the cart', async ({
+		products,
+		header
+	}) => {
+		const productNames = await products.locators.itemName.allInnerTexts();
+		expect(productNames.length).toBeGreaterThanOrEqual(2);
+
+		await products.addToCart(productNames[0]);
+		await products.addToCart(productNames[1]);
+
+		expect(await header.getCartCount()).toEqual(2);
+	});
+
+	test('should allow removing an item from the cart', async ({
+		products,
+		header
+	}) => {
+		const firstProduct = await products.locators.itemName
+			.first()
+			.innerText();
+
+		await products.addToCart(firstProduct);
+		expect(await header.getCartCount()).toEqual(1);
+
+		await products.removeFromCart(firstProduct);
+		expect(await header.getCartCount()).toEqual(0);
+	});
+
+	test('should sort products by price low to high', async ({ products }) => {
+		await products.filterProducts('Price (low to high)');
+
+		const allPrices = await products.locators.itemPrice.allInnerTexts();
+		const prices = allPrices.map((price) => Number(price.replace('$', '')));
+		const sorted = [...prices].sort((a, b) => a - b);
+
+		expect(prices).toEqual(sorted);
+	});
+
+	test('should sort products by price High to Low', async ({ products }) => {
+		await products.filterProducts('Price (high to low)');
+
+		const allPrices = await products.locators.itemPrice.allInnerTexts();
+		const prices = allPrices.map((price) => Number(price.replace('$', '')));
+		const sorted = [...prices].sort((a, b) => a + b);
+
+		expect(prices).toEqual(sorted);
+	});
+
+	test('clicking a product name opens its detail page', async ({
+		products,
+		product
+	}) => {
+		const firstProduct = await products.locators.itemName
+			.first()
+			.innerText();
+
+		await products.openProduct(firstProduct);
+
+		await expect(product.locators.name).toHaveText(firstProduct);
+	});
+});

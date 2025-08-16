@@ -1,0 +1,7 @@
+
+# Playwright
+node_modules/
+/test-output/
+
+.auth
+

@@ -1,0 +1,6 @@
+# Playwright Specific
+node_modules/
+test-output/
+
+# IDE - VSCode
+.vscode/*

@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"module": "nodenext",
+		"moduleResolution": "NodeNext",
+		"strict": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"resolveJsonModule": true,
+		"types": ["node", "@playwright/test"],
+		"paths": {
+			"@config": ["config"],
+			"@config/*": ["config/*"],
+			"@fixtures": ["src/fixtures"],
+			"@helpers/*": ["src/helpers/*"],
+			"@users/*": ["src/users/*"],
+			"@pages/*": ["src/pages/*"]
+		}
+	}
+}
