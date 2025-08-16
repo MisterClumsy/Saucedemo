@@ -56,6 +56,20 @@ test.describe('Products', () => {
 		expect(prices).toEqual(sorted);
 	});
 
+	test('should sort products by name A to Z', async ({ products }) => {
+		await products.filterProducts('Name (A to Z)');
+		const allNames = await products.locators.itemName.allInnerTexts();
+		const sorted = [...allNames].sort((a, b) => a.localeCompare(b));
+		expect(allNames).toEqual(sorted);
+	});
+
+	test('should sort products by name Z to A', async ({ products }) => {
+		await products.filterProducts('Name (Z to A)');
+		const allNames = await products.locators.itemName.allInnerTexts();
+		const sorted = [...allNames].sort((a, b) => b.localeCompare(a));
+		expect(allNames).toEqual(sorted);
+	});
+
 	test('clicking a product name opens its detail page', async ({
 		products,
 		product

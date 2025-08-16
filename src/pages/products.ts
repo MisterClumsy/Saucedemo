@@ -10,7 +10,7 @@ const productsLocators = (page: Page) => ({
 		page.getByRole('link', { name }).first(),
 	addProductByName: (name: string) =>
 		page.getByTestId(`add-to-cart-${productNameToTestId(name)}`),
-	removeButtonByName: (name: string) =>
+	removeProductByName: (name: string) =>
 		page.getByTestId(`remove-${productNameToTestId(name)}`),
 	itemName: page.getByTestId('inventory-item-name'),
 	itemPrice: page.getByTestId('inventory-item-price')
@@ -48,6 +48,6 @@ export default class ProductsPage {
 	}
 
 	async removeFromCart(name: string): Promise<void> {
-		await this.locators.removeButtonByName(name).click();
+		await this.locators.removeProductByName(name).click();
 	}
 }
