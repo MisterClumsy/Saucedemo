@@ -13,26 +13,26 @@ export default defineConfig({
 			dependencies: ['Auth'],
 			name: 'chromium',
 			use: { ...devices['Desktop Chrome'] }
+		},
+		{
+			dependencies: ['Auth'],
+			name: 'firefox',
+			use: { ...devices['Desktop Firefox'] }
+		},
+		{
+			dependencies: ['Auth'],
+			name: 'webkit',
+			use: { ...devices['Desktop Safari'] }
+		},
+		{
+			dependencies: ['Auth'],
+			name: 'Mobile Chrome',
+			use: { ...devices['Pixel 7'] }
+		},
+		{
+			dependencies: ['Auth'],
+			name: 'Mobile Safari',
+			use: { ...devices['iPhone 15'] }
 		}
-		// {
-		// 	dependencies: ['Auth'],
-		// 	name: 'firefox',
-		// 	use: { ...devices['Desktop Firefox'] }
-		// },
-		// {
-		// 	dependencies: ['Auth'],
-		// 	name: 'webkit',
-		// 	use: { ...devices['Desktop Safari'] }
-		// },
-		// {
-		// 	dependencies: ['Auth'],
-		// 	name: 'Mobile Chrome',
-		// 	use: { ...devices['Pixel 7'] }
-		// },
-		// {
-		// 	dependencies: ['Auth'],
-		// 	name: 'Mobile Safari',
-		// 	use: { ...devices['iPhone 15'] }
-		// }
 	]
 });

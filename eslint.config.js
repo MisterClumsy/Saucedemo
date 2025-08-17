@@ -22,6 +22,12 @@ export default [
 			...typescript.configs.recommended.rules,
 			...playwright.configs['flat/recommended'].rules,
 			...prettier.rules,
+			'playwright/expect-expect': [
+				'error',
+				{
+					assertFunctionNames: ['a11y']
+				}
+			],
 			'playwright/no-skipped-test': 'off',
 			'playwright/no-conditional-in-test': 'off',
 			'@typescript-eslint/no-explicit-any': 'warn',

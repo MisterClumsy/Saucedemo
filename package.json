@@ -1,17 +1,18 @@
 {
 	"name": "saucedemo",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Automated functional tests for a shopping cart example web site",
 	"scripts": {
 		"lint:fix": "eslint . --fix",
 		"lint:report": "eslint . -o ./testOutput/eslintReport.html",
-		"lint": "eslint ./tests",
+		"lint": "eslint .",
 		"postinstall": "npx playwright install --with-deps",
 		"prepare": "husky",
 		"prettier:check": "npx prettier . --check",
 		"prettier:fix": "npx prettier . --write",
 		"show-report": "npx playwright show-report test-output/html",
 		"snapshots:update": "cross-env PW_ENV=prod playwright test -c config/visual.config.ts --update-snapshots",
+		"test": "playwright test",
 		"test:e2e": "cross-env PW_ENV=prod playwright test -c config/e2e.config.ts",
 		"test:visual": "cross-env PW_ENV=prod playwright test -c config/visual.config.ts",
 		"test:a11y": "cross-env PW_ENV=prod playwright test -c config/a11y.config.ts"

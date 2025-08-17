@@ -3,8 +3,7 @@ import { Page } from '@playwright/test';
 const loginLocators = (page: Page) => ({
 	usernameInput: page.getByTestId('username'),
 	passwordInput: page.getByTestId('password'),
-	loginButton: page.getByRole('button', { name: /login/i }),
-	error: page.getByTestId('error')
+	loginButton: page.getByRole('button', { name: /login/i })
 });
 
 export default class LoginPage {

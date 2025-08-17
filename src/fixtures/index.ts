@@ -4,17 +4,21 @@ import LoginPage from '@pages/login';
 import Products from '@pages/products';
 import Product from '@pages/product';
 import Checkout from '@pages/checkout';
+import Cart from '@pages/cart';
+import ErrorComponent from '@pages/error';
 import Header from '@pages/header';
 import A11y from '@helpers/a11y';
 
 type TSaucedemo = {
 	a11y: typeof A11y;
-	users: UserUtils;
-	login: LoginPage;
-	products: Products;
-	product: Product;
+	cart: Cart;
 	checkout: Checkout;
+	error: ErrorComponent;
 	header: Header;
+	login: LoginPage;
+	product: Product;
+	products: Products;
+	users: UserUtils;
 };
 
 export const test = base.extend<TSaucedemo>({
@@ -28,6 +32,18 @@ export const test = base.extend<TSaucedemo>({
 	// #endregion
 
 	// #region Pages
+	cart: async ({ page }: { page: Page }, use) => {
+		await use(new Cart(page));
+	},
+	checkout: async ({ page }: { page: Page }, use) => {
+		await use(new Checkout(page));
+	},
+	error: async ({ page }: { page: Page }, use) => {
+		await use(new ErrorComponent(page));
+	},
+	header: async ({ page }: { page: Page }, use) => {
+		await use(new Header(page));
+	},
 	login: async ({ page }: { page: Page }, use) => {
 		await use(new LoginPage(page));
 	},
@@ -36,12 +52,6 @@ export const test = base.extend<TSaucedemo>({
 	},
 	products: async ({ page }: { page: Page }, use) => {
 		await use(new Products(page));
-	},
-	checkout: async ({ page }: { page: Page }, use) => {
-		await use(new Checkout(page));
-	},
-	header: async ({ page }: { page: Page }, use) => {
-		await use(new Header(page));
 	}
 	// #endregion
 });
