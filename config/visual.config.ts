@@ -3,6 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 import path from 'path';
 
 const VISUAL_DIR = path.resolve(process.cwd(), 'tests', 'visual');
+const HTML_DIR = path.resolve(process.cwd(), 'test-output', 'html', 'visual');
 
 export default defineConfig({
 	...baseConfig,
@@ -16,6 +17,8 @@ export default defineConfig({
 			scale: 'device'
 		}
 	},
+	reporter: [['list'], ['html', { outputFolder: HTML_DIR, open: 'never' }]],
+	outputDir: path.resolve(baseConfig.outputDir!, 'visual'),
 	projects: [
 		...baseConfig.projects!.filter((project) => project.name === 'Auth'),
 		{
