@@ -4,7 +4,7 @@ import config from './env/env';
 
 const TESTS_DIR = path.resolve(process.cwd(), 'tests');
 const ARTIFACTS_DIR = path.resolve(process.cwd(), 'test-output', 'artifacts');
-const REPORT_DIR = path.resolve(process.cwd(), 'test-output', 'html');
+const HTML_DIR = path.resolve(process.cwd(), 'test-output', 'html');
 
 export default defineConfig({
 	outputDir: ARTIFACTS_DIR,
@@ -14,7 +14,7 @@ export default defineConfig({
 	},
 	fullyParallel: true,
 	retries: 1,
-	reporter: [['list'], ['html', { outputFolder: REPORT_DIR, open: 'never' }]],
+	reporter: [['list'], ['html', { outputFolder: HTML_DIR, open: 'never' }]],
 	use: {
 		baseURL: config.BASE_URL,
 		testIdAttribute: 'data-test',

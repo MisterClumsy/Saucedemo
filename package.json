@@ -10,9 +10,12 @@
 		"prepare": "husky",
 		"prettier:check": "npx prettier . --check",
 		"prettier:fix": "npx prettier . --write",
-		"show-report": "npx playwright show-report test-output/html",
+		"show-report:a11y": "npx playwright show-report test-output/html/a11y",
+		"show-report:e2e": "npx playwright show-report test-output/html/e2e",
+		"show-report:visual": "npx playwright show-report test-output/html/visual",
 		"snapshots:update": "cross-env PW_ENV=prod playwright test -c config/visual.config.ts --update-snapshots",
 		"test": "playwright test",
+		"test:all": "npm run test:e2e && npm run test:a11y && npm run test:visual",
 		"test:e2e": "cross-env PW_ENV=prod playwright test -c config/e2e.config.ts",
 		"test:visual": "cross-env PW_ENV=prod playwright test -c config/visual.config.ts",
 		"test:a11y": "cross-env PW_ENV=prod playwright test -c config/a11y.config.ts"
