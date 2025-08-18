@@ -40,9 +40,9 @@ test.describe('Checkout', () => {
 		await test.step('Checkout', async () => {
 			await cart.checkout();
 			await checkout.fillCustomerDetails({
-				first: 'Ian',
-				last: 'Richards',
-				postCode: 'F0O B4R'
+				first: 'Harry',
+				last: 'Potter',
+				postCode: 'W1Z 4RD'
 			});
 			await checkout.continueToOverview();
 
