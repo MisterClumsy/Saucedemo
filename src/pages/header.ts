@@ -20,7 +20,7 @@ export default class InventoryHeader {
 		this.locators = headerLocators(page);
 	}
 
-	async openCart() {
+	async openCart(): Promise<void>  {
 		await this.locators.cartLink.click();
 	}
 
@@ -34,30 +34,30 @@ export default class InventoryHeader {
 		return Number.isNaN(cartValueNumber) ? 0 : cartValueNumber;
 	}
 
-	async openMenu() {
+	async openMenu(): Promise<void>  {
 		await this.locators.menuButton.click();
 	}
 
-	async closeMenu() {
+	async closeMenu(): Promise<void>  {
 		await this.locators.closeMenuButton.click();
 	}
 
-	async goToAbout() {
+	async goToAbout(): Promise<void>  {
 		await this.openMenu();
 		await this.locators.aboutLink.click();
 	}
 
-	async goToAllItems() {
+	async goToAllItems(): Promise<void>  {
 		await this.openMenu();
 		await this.locators.allItemsLink.click();
 	}
 
-	async resetAppState() {
+	async resetAppState(): Promise<void>  {
 		await this.openMenu();
 		await this.locators.resetAppStateLink.click();
 	}
 
-	async logout() {
+	async logout(): Promise<void>  {
 		await this.openMenu();
 		await this.locators.logoutLink.click();
 	}
