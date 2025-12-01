@@ -31,7 +31,7 @@
 	},
 	"homepage": "https://github.com/MisterClumsy/Saucedemo#readme",
 	"devDependencies": {
-		"@axe-core/playwright": "^4.10.2",
+		"@axe-core/playwright": "^4.11.0",
 		"@playwright/test": "^1.54.2",
 		"@types/node": "^24.10.1",
 		"axe-html-reporter": "^2.2.11",
